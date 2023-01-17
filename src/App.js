@@ -34,20 +34,20 @@ const factory = [
 function App() {
   return (
     <div className="white-background">
-      <h2>휴스타</h2>
-      <p>휴스타</p>
+      <h2>PBL middleware monitoring web </h2>
+      <p>**전체 현황**</p>
       {
         factory.map(c =>{
           return (
           <Data1
-          key = {c.id}
-          id = {c.id}
-          image = {c.image}
-          name = {c.name}
-          process1 = {c.process1}
-          process2 = {c.process2}
-          process3 = {c.process3}
-          pass = {c.pass}
+            key = {c.id}
+            id = {c.id}
+            image = {c.image}
+            name = {c.name}
+            process1 = {c.process1}
+            process2 = {c.process2}
+            process3 = {c.process3}
+            pass = {c.pass}
           />)
         })
       }

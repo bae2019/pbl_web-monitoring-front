@@ -1,8 +1,40 @@
-import React from "react";
+import React, { createFactory } from "react";
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Paper,
+} from '@material-ui/core';
+
 
 function Data1(props) {
     return(
+        <TableContainer component={Paper}>
+            <Table size="small">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>no</TableCell>
+                        <TableCell align="middle">process1</TableCell>
+                        <TableCell align="middle">process2</TableCell>
+                        <TableCell align="middle">process3</TableCell>
+                        <TableCell align="right">pass</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    <TableCell>{props.name}</TableCell>
+                    <TableCell align="middle">{props.process1}</TableCell>
+                    <TableCell align="middle">{props.process2}</TableCell>
+                    <TableCell align="middle">{props.process3}</TableCell>
+                    <TableCell align="right">{props.pass}</TableCell>
+                </TableBody>
+            </Table>
+        </TableContainer>
+        /*
         <div>
+            
             <h2>{props.name}</h2>
             <img src={props.image} alt="profile"/>
             <p>{props.process1}</p>
@@ -10,6 +42,7 @@ function Data1(props) {
             <p>{props.process3}</p>
             <p>{props.pass}</p>
         </div>
+        */
     )
 }
 

@@ -1,3 +1,61 @@
 .white-background{
   background: white;
 }
+
+.TitleBox{
+  background : skyblue;
+  text-align : center;
+  color : white;
+  font-size : 25px;
+}
+
+.TextBox{
+  text-align : left;
+  color : black;
+  font-size : 18px;
+  margin-left : 30px;
+  margin-bottom : 10px;
+}
+
+.Logoimg{
+  margin-top : 20px;
+  margin-bottom : -40px;
+  width : 100px;
+}
+
+.MainTable{
+  margin-left : 20px;
+  margin-right : 20px;
+}
+
+.HorizontalLine{
+  background : gainsboro;
+  margin-top : 20px;
+  margin-bottom : 20px;
+  margin-left : 10px;
+  margin-right : 10px;
+  padding-bottom : 3px;
+}
+
+.buttonbox{
+  text-align : right;
+  margin-right : 50px;
+}
+
+.margin_last{
+  margin-top : 150px;
+  text-align : right;
+  color : gray;
+  margin-right : 30px;
+  margin-bottom : 50px;
+}
+
+.margin_short{
+  margin-top : 30px;
+}
+
+.menubar{
+  margin-top : -31px;
+  margin-bottom : 20px;
+  background-color : gainsboro;
+}

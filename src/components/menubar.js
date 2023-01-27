@@ -1,16 +1,31 @@
 import React from "react";
+import { Link  } from "react-router-dom";
 import { Button } from '@material-ui/core';
 
 function Menubar() {
     return(
         <>
-            <Button>main</Button>
-            <Button>공 장 1</Button>
-            <Button>공 장 2</Button>
-            <Button>공 장 3</Button>
-            <Button>공 장 4</Button>
-            <Button>공 장 5</Button>
-            <Button>공 장 6</Button>
+            <Button>
+                <Link to = "/home">main</Link>
+            </Button>
+            <Button>
+                <Link to = "/fac1">공 장 1</Link>
+            </Button>
+            <Button>
+                <Link to = "/fac2">공 장 2</Link>
+            </Button>
+            <Button>
+                <Link to = "/fac3">공 장 3</Link>
+            </Button>
+            <Button>
+                <Link to = "/fac4">공 장 4</Link>
+            </Button>
+            <Button>
+                <Link to = "/fac5">공 장 5</Link>
+            </Button>
+            <Button>
+                <Link to = "/fac6">공 장 6</Link>
+            </Button>
         </>
     );
 }

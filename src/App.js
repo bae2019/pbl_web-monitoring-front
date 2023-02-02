@@ -1,3 +1,4 @@
+import { Route, Routes } from "react-router-dom";
 import './App.css';
 import Menubar from './components/menubar';
 import Main from './pages/Main';
@@ -7,7 +8,6 @@ import Fac3 from './pages/Fac3';
 import Fac4 from './pages/Fac4';
 import Fac5 from './pages/Fac5';
 import Fac6 from './pages/Fac6';
-import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
@@ -16,13 +16,13 @@ function App() {
         <img className="Logoimg" alt="SL_logo" src="image/logo_l.png"/>
         <h2>PBL middleware monitoring web </h2>
       </div>
+
       <div className="menubar">
         <Menubar />
       </div>
 
       <Routes>
-        <Route path = "/" element = {<Menubar />}></Route>
-          <Route path = "/home" element = {<Main />}></Route>
+        <Route path = "/" element = {<Main />}></Route>
           <Route path = "/fac1" element = {<Fac1 />}></Route>
           <Route path = "/fac2" element = {<Fac2 />}></Route>
           <Route path = "/fac3" element = {<Fac3 />}></Route>

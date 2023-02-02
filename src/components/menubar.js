@@ -6,7 +6,7 @@ function Menubar() {
     return(
         <>
             <Button>
-                <Link to = "/home">main</Link>
+                <Link to = "/">main</Link>
             </Button>
             <Button>
                 <Link to = "/fac1">공 장 1</Link>

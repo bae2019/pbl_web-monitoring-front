@@ -23,7 +23,7 @@ import {
       return (
         <div>
           <div className="TextBox">
-          [ 공장2 장치별 데이터 전체 일람 ]
+          [ 공장5 장치별 데이터 전체 일람 ]
         </div>
         <div className="MainTable">
           {

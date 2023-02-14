@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Checkbox from "../components/checkbox";
 import Styled from "../components/Styled";
+import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import { ko } from 'date-fns/esm/locale';
 import "react-datepicker/dist/react-datepicker.css"
@@ -39,8 +40,18 @@ import {
       'err_dt' : '2023-01-15 15:31',
       'err_cd' : Math.floor(Math.random()*100),
       'err_prc_cd' : "공정" + String(Math.floor(Math.random()*10/5+1)),
-      'wkctr' : "설비"+String(Math.floor(Math.random()*10/2))
+      'wkctr' : "설비"+String(Math.floor(Math.random()*10%2)+1)
   }));
+  const MyDatePicker = styled(DatePicker)`
+  margin-top:10px;
+  margin-bottom:10px;
+  width:60%;
+  height:30px;
+  font-size:20px;
+  background-color:white;
+  color:gray;
+  border: 1px solid;
+ `
 
   const Fac11 = () => {
     const [startdt, setstartdt] = useState(new Date());
@@ -70,39 +81,51 @@ import {
             </div>
           </div>
           <div>
-            <DatePicker
+            <MyDatePicker
               selected={startdt}
               onChange={date => setstartdt(date)}
               locale={ko}
-              dateFormat="yyyy년 MM월 dd일" />
-            <DatePicker
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              timeCaption="시간"
+              dateFormat="yyyy년 MM월 dd일 aa h시 mm분"
+              maxDate={new Date()}
+               />
+            <MyDatePicker
               selected={enddt}
               onChange={date => setenddt(date)}
               locale={ko}
-              dateFormat="yyyy년 MM월 dd일" />
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              timeCaption="시간"
+              dateFormat="yyyy년 MM월 dd일 aa h시 mm분"
+              maxDate={new Date()}
+               />
           </div>
           <div className="v-line"></div>
           <div>
             <div className="boxcheck">
               <Checkbox checked={ps1} onChange={setps1}>
-                공 장 1
+                공 정 1
               </Checkbox>
               <Checkbox checked={ps3} onChange={setps3}>
-                공 장 3
+                공 정 3
               </Checkbox>
               <Checkbox checked={ps5} onChange={setps5}>
-                공 장 5
+                공 정 5
               </Checkbox>
             </div>
             <div className="boxcheck">
               <Checkbox checked={ps2} onChange={setps2}>
-                공 장 2
+                공 정 2
               </Checkbox>
               <Checkbox checked={ps4} onChange={setps4}>
-                공 장 4
+                공 정 4
               </Checkbox>
               <Checkbox checked={ps6} onChange={setps6}>
-                공 장 6
+                공 정 6
               </Checkbox>
             </div>
           </div>

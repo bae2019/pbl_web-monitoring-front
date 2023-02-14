@@ -1,3 +1,10 @@
+import React, {useState} from "react";
+import Checkbox from "../components/checkbox";
+import Styled from "../components/Styled";
+import styled from "styled-components";
+import DatePicker from "react-datepicker";
+import { ko } from 'date-fns/esm/locale';
+import "react-datepicker/dist/react-datepicker.css"
 import {
     Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
   } from '@material-ui/core';
@@ -34,6 +41,17 @@ import {
         'err_cd' : Math.floor(Math.random()*100),
         'err_prc_cd' : "공정" + String(Math.floor(Math.random()*10/5+1)),
     }));
+    const MyDatePicker = styled(DatePicker)`
+    margin-top:10px;
+    margin-bottom:10px;
+    width:60%;
+    height:30px;
+    font-size:20px;
+    font-weight:bold;
+    background-color:white;
+    color:black;
+    border: 1px solid;
+   `
   
   const Fac12 = () => {
       return (

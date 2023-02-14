@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Checkbox from "../components/checkbox";
 import Styled from "../components/Styled";
 import styled from "styled-components";
@@ -10,9 +10,33 @@ import {
   } from '@material-ui/core';
 
   const stt = ['양품', '불량품'];
-  const factory = Array(20)    //임시 데이터 생성
-      .fill()
-      .map(() => ({
+  const MyDatePicker = styled(DatePicker)`
+  margin-top:10px;
+  margin-bottom:10px;
+  width:60%;
+  height:30px;
+  font-size:20px;
+  background-color:white;
+  color:gray;
+  border: 1px solid;
+ `
+
+  const Fac11 = (props) => {
+    const [factory2, setfactory] = useState([]);
+    const callApi = async() => {
+      const res = await fetch('/fac11').then((res) => res.json());
+      
+      //setfactory(initfac);
+    };
+    useEffect(() => {
+      callApi();
+    });
+    console.log(factory2);
+
+
+    const factory = Array(20)    //임시 데이터 생성
+    .fill()
+    .map(() => ({
       'id' : Math.floor(Math.random()*10),
       'create_dt_01' : '2023-01-15 15:31',
       'data_a_01' : Math.floor(Math.random()*100),
@@ -40,20 +64,7 @@ import {
       'err_dt' : '2023-01-15 15:31',
       'err_cd' : Math.floor(Math.random()*100),
       'err_prc_cd' : "공정" + String(Math.floor(Math.random()*10/5+1)),
-      'wkctr' : "설비"+String(Math.floor(Math.random()*10%2)+1)
   }));
-  const MyDatePicker = styled(DatePicker)`
-  margin-top:10px;
-  margin-bottom:10px;
-  width:60%;
-  height:30px;
-  font-size:20px;
-  background-color:white;
-  color:gray;
-  border: 1px solid;
- `
-
-  const Fac11 = () => {
     const [startdt, setstartdt] = useState(new Date());
     const [enddt, setenddt] = useState(new Date());
     const [ps1, setps1] = useState(false);

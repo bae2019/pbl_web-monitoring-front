@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import Axios from "axios";
 import Checkbox from "../components/checkbox";
 import Styled from "../components/Styled";
 import styled from "styled-components";
@@ -9,7 +10,6 @@ import {
     Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
   } from '@material-ui/core';
 
-  const stt = ['양품', '불량품'];
   const MyDatePicker = styled(DatePicker)`
   margin-top:10px;
   margin-bottom:10px;
@@ -22,49 +22,6 @@ import {
  `
 
   const Fac11 = (props) => {
-    const [factory2, setfactory] = useState([]);
-    const callApi = async() => {
-      const res = await fetch('/fac11').then((res) => res.json());
-      
-      //setfactory(initfac);
-    };
-    useEffect(() => {
-      callApi();
-    });
-    console.log(factory2);
-
-
-    const factory = Array(20)    //임시 데이터 생성
-    .fill()
-    .map(() => ({
-      'id' : Math.floor(Math.random()*10),
-      'create_dt_01' : '2023-01-15 15:31',
-      'data_a_01' : Math.floor(Math.random()*100),
-      'data_b_01' : Math.floor(Math.random()*100),
-      'quality_01' : stt[Math.floor(Math.random()*10%2)],
-      'create_dt_02' : '2023-01-15 15:31',
-      'data_a_02' : Math.floor(Math.random()*100),
-      'data_b_02' : Math.floor(Math.random()*100),
-      'quality_02' : stt[Math.floor(Math.random()*10%2)],
-      'create_dt_03' : '2023-01-15 15:31',
-      'data_a_03' : Math.floor(Math.random()*100),
-      'data_b_03' : Math.floor(Math.random()*100),
-      'quality_03' : stt[Math.floor(Math.random()*10%2)],
-      'create_dt_04' : '2023-01-15 15:31',
-      'data_a_04' : Math.floor(Math.random()*100),
-      'data_b_04' : Math.floor(Math.random()*100),
-      'quality_04' : stt[Math.floor(Math.random()*10%2)],
-      'create_dt_05' : '2023-01-15 15:31',
-      'data_a_05' : Math.floor(Math.random()*100),
-      'data_b_05' : Math.floor(Math.random()*100),
-      'quality_05' : stt[Math.floor(Math.random()*10%2)],
-      'create_dt_06' : '2023-01-15 15:31',
-      'data_a_06' : Math.floor(Math.random()*100),
-      'data_b_06' : Math.floor(Math.random()*100),
-      'err_dt' : '2023-01-15 15:31',
-      'err_cd' : Math.floor(Math.random()*100),
-      'err_prc_cd' : "공정" + String(Math.floor(Math.random()*10/5+1)),
-  }));
     const [startdt, setstartdt] = useState(new Date());
     const [enddt, setenddt] = useState(new Date());
     const [ps1, setps1] = useState(false);
@@ -73,6 +30,55 @@ import {
     const [ps4, setps4] = useState(false);
     const [ps5, setps5] = useState(false);
     const [ps6, setps6] = useState(false);
+    const [see, setsee] = useState(false);
+    const [factory, setfactory] = useState([]);
+
+    const filterData = () => {
+      const now = new Date();
+      let now2 = {
+        year: now.getFullYear(),
+        month: now.getMonth() + 1,
+        date: now.getDate(),
+        hours: now.getHours(),
+        minutes: now.getMinutes()
+      }
+      let now3 = `${now2.year}-${now2.month}-${now2.date} ${now2.hours}:${now2.minutes}`;
+      if((startdt!==now3)&&(enddt!==now3)&&see){
+        if(ps1){
+          //공정1 변수로
+        }
+        if(ps2){
+          //공정2 변수로
+        }
+        //~6까지
+        //select하고 db로 만들기
+        //see 돌려놓기
+      }
+    };
+
+    useEffect(() => {
+      console.log("useEffect 시작~~!");/*
+      Axios.get("http://localhost:5000/fac11", {})  //server.js의 result res가 전달받음
+        .then((res) => {
+          console.log((res));
+          const {data} = res;
+          console.log("data ==>",data);
+          setfactory({factory: data,});
+        }).catch((e) => {console.error(e);})
+      console.log("get끝!!!!!")
+      //const res = await fetch('/fac11').then((res) => res.json());
+      //fetch("http://localhost:5000/fac11")
+      //  .then((response) => response.json());*/
+      window
+        .fetch(`http://localhost:5000/fac11`)
+        .then((res) => res.json())
+        .then((factory) => {
+          setfactory(factory);
+        })
+        .catch((error) => {throw error;})
+      //filterData();
+    });
+    console.log(factory);
       return (
         <div>
           <div className = "pagename">
@@ -101,7 +107,6 @@ import {
               timeIntervals={15}
               timeCaption="시간"
               dateFormat="yyyy년 MM월 dd일 aa h시 mm분"
-              maxDate={new Date()}
                />
             <MyDatePicker
               selected={enddt}
@@ -112,7 +117,6 @@ import {
               timeIntervals={15}
               timeCaption="시간"
               dateFormat="yyyy년 MM월 dd일 aa h시 mm분"
-              maxDate={new Date()}
                />
           </div>
           <div className="v-line"></div>
